@@ -1,0 +1,18 @@
+{
+  "version": "v4",
+  "repo": "borisyankov/DefinitelyTyped",
+  "ref": "master",
+  "path": "tools/typings",
+  "bundle": "tools/typings/tsd.d.ts",
+  "installed": {
+    "node/node.d.ts": {
+      "commit": "299b5caa22876ef27dc8e9a5b7fd7bf93457b6f4"
+    },
+    "angularjs/angular.d.ts": {
+      "commit": "299b5caa22876ef27dc8e9a5b7fd7bf93457b6f4"
+    },
+    "jquery/jquery.d.ts": {
+      "commit": "299b5caa22876ef27dc8e9a5b7fd7bf93457b6f4"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "ng-injector",
+  "version": "0.1.0",
+  "description": "Injector decorator for writing angular 1.x with ES6/TypeScript",
+  "main": "lib/cjs/index.js",
+  "typings": "lib/cjs/index.d.ts",
+  "scripts": {
+    "prepublish": "build_all",
+    "build_cjs": "rm -rf lib/cjs && tsc src/index.ts tools/typings/tsd.d.ts -m commonjs --outDir lib/cjs --sourcemap --sourceRoot src --target ES5 -d --diagnostics --pretty --experimentalDecorators --suppressImplicitAnyIndexErrors",
+    "build_es6": "rm -rf lib/es2015 && tsc src/index.ts tools/typings/tsd.d.ts --outDir lib/es2015 --sourcemap --sourceRoot src --target ES2015 -d --diagnostics --pretty --experimentalDecorators --suppressImplicitAnyIndexErrors",
+    "build_umd": "ts-node ./tools/build/bundle.ts",
+    "build_test": "rm -rf www && ts-node tools/build/build_test.ts && cp test/index.html www",
+    "build_all": "npm run build_cjs && npm run build_es6 && npm run build_umd && npm run build_test",
+    "watch": "ts-node ./tools/build/watch.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "lib",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Brooooooklyn/angular1.x-injector.git"
+  },
+  "keywords": [
+    "Angular",
+    "Angular.js",
+    "Angularjs",
+    "Injector",
+    "Decorator"
+  ],
+  "author": "lynweklm@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Brooooooklyn/angular1.x-injector/issues"
+  },
+  "homepage": "https://github.com/Brooooooklyn/angular1.x-injector#readme",
+  "devDependencies": {
+    "angular": "^1.5.3",
+    "babel-preset-es2015-rollup": "^1.1.1",
+    "rollup": "^0.25.6",
+    "rollup-plugin-babel": "^2.4.0",
+    "ts-loader": "^0.8.1",
+    "tsd": "^0.6.5",
+    "typescript": "^1.8.9",
+    "uglify-js": "^2.6.2",
+    "webpack": "^1.12.14"
+  }
+}
