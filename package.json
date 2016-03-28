@@ -5,14 +5,14 @@
   "main": "lib/cjs/index.js",
   "typings": "lib/cjs/index.d.ts",
   "scripts": {
-    "prepublish": "build_all",
-    "build_cjs": "rm -rf lib/cjs && tsc src/index.ts tools/typings/tsd.d.ts -m commonjs --outDir lib/cjs --sourcemap --sourceRoot src --target ES5 -d --diagnostics --pretty --experimentalDecorators --suppressImplicitAnyIndexErrors",
-    "build_es6": "rm -rf lib/es2015 && tsc src/index.ts tools/typings/tsd.d.ts --outDir lib/es2015 --sourcemap --sourceRoot src --target ES2015 -d --diagnostics --pretty --experimentalDecorators --suppressImplicitAnyIndexErrors",
-    "build_umd": "ts-node ./tools/build/bundle.ts",
+    "build_cjs": "rm -rf ./lib/cjs && ./node_modules/.bin/tsc src/index.ts tools/typings/tsd.d.ts -m commonjs --outDir lib/cjs --sourcemap --sourceRoot src --target ES5 -d --diagnostics --pretty --experimentalDecorators --suppressImplicitAnyIndexErrors",
+    "build_es6": "rm -rf ./lib/es2015 && ./node_modules/.bin/tsc src/index.ts tools/typings/tsd.d.ts --outDir lib/es2015 --sourcemap --sourceRoot src --target ES2015 -d --diagnostics --pretty --experimentalDecorators --suppressImplicitAnyIndexErrors",
+    "build_umd": "rm -f ./lib/injector* && ./node_modules/.bin/ts-node ./tools/build/bundle.ts",
     "build_test": "rm -rf www && ts-node tools/build/build_test.ts && cp test/index.html www",
     "build_all": "npm run build_cjs && npm run build_es6 && npm run build_umd && npm run build_test",
-    "watch": "ts-node ./tools/build/watch.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "./node_modules/.bin/ts-node ./tools/build/watch.ts",
+    "lint": "./node_modules/.bin/tslint -c ./tslint.json ./src/**/*.ts",
+    "test": "./node_modules/.bin/mocha-phantomjs test/index.html"
   },
   "files": [
     "lib",
@@ -37,13 +37,19 @@
   "homepage": "https://github.com/Brooooooklyn/angular1.x-injector#readme",
   "devDependencies": {
     "angular": "^1.5.3",
+    "angular-mocks": "1.5.0",
     "babel-preset-es2015-rollup": "^1.1.1",
+    "chai": "^3.5.0",
+    "ionic-release": "^1.2.4",
+    "mocha": "^2.4.5",
+    "mocha-phantomjs": "^4.0.2",
     "rollup": "^0.25.6",
     "rollup-plugin-babel": "^2.4.0",
     "ts-loader": "^0.8.1",
+    "ts-node": "^0.7.1",
     "tsd": "^0.6.5",
+    "tslint": "^3.6.0",
     "typescript": "^1.8.9",
-    "uglify-js": "^2.6.2",
     "webpack": "^1.12.14"
   }
 }

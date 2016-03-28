@@ -13,9 +13,9 @@ npm i ng-injector --save
 home_view.js
 ```js
 'use strict'
-import {injector} from 'ng-injector'
+import {ctrlInjector} from 'ng-injector'
 
-@injector([
+@ctrlInjector([
   '$timeout'
 ])
 export class HomeView {
@@ -46,9 +46,9 @@ angular.module('YourModuleName', [])
 home_view.ts
 ```ts
 'use strict'
-import {injector} from 'ng-injector'
+import {ctrlInjector} from 'ng-injector'
 
-@injector([
+@ctrlInjector([
   '$timeout'
 ])
 export class HomeView {
@@ -75,4 +75,19 @@ app.ts
 import {HomeView} from './home_view'
 angular.module('YourModuleName', [])
   .controller('HomeView', HomeView)
+```
+
+## inject $scope default
+
+```js
+'use strict'
+import {ctrlInjector} from 'ng-injector'
+
+@ctrlInjector()
+class HomeView {
+  constructor() {
+    console.log(this.$scope) // Your Scope Here
+  }
+}
+
 ```

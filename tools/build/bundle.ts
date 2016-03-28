@@ -4,7 +4,6 @@ import * as fs from 'fs'
 
 const rollup  = require('rollup')
 const babel   = require('rollup-plugin-babel')
-const uglify  = require('uglify-js')
 const version = process.env.VERSION || require('../../package.json').version
 
 const banner =
@@ -23,24 +22,37 @@ rollup.rollup({
   ]
 })
 .then(bundle => {
-  const code = bundle.generate({
-    format: 'umd',
-    banner: banner,
-    moduleName: 'injector'
-  }).code
-
-  const minified = banner + '\n' + uglify.minify(code, {
-    fromString: true,
-    output: {
-      ascii_only: true
-    }
-  }).code
-
-  return write('lib/injector.min.js', minified)
+  return Promise.all([
+    bundleUMD(bundle),
+    bundleCJS(bundle)
+  ])
 })
 .catch(reason => {
   console.error(reason)
 })
+
+function bundleCJS (bundle: any) {
+  return new Promise(resolve => {
+    const code = bundle.generate({
+      format: 'cjs',
+      banner: banner
+    }).code
+
+    return write('lib/injector.js', code).then(resolve)
+  })
+}
+
+function bundleUMD (bundle: any) {
+  return new Promise(resolve => {
+    const code = bundle.generate({
+      format: 'umd',
+      banner: banner,
+      moduleName: 'injector'
+    }).code
+
+    return write('lib/injector.umd.js', code).then(resolve)
+  })
+}
 
 function write (dest: string, code: string) {
   return new Promise(function (resolve, reject) {

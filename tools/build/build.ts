@@ -6,7 +6,7 @@ export const bundle = (watch?: boolean) => {
   const config = {
     entry: {
       app: path.join(process.cwd(), 'test/index.ts'),
-      lib: ['angular']
+      lib: ['ionic-release', 'angular-mocks']
     },
     output: {
       filename: 'app.js',

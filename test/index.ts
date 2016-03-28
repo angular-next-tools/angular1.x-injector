@@ -1,28 +1,6 @@
 'use strict'
 
-import {injector} from '../src'
+export * from './app'
+export * from './spec'
 
-@injector([
-  'TestService'
-])
-export class TestView {
-  private TestService: TestService
-
-  constructor() {
-    console.log(this.TestService.getName())
-  }
-}
-
-export class TestService {
-  getName() {
-    return 'TestService'
-  }
-}
-
-angular.module('App', ['App.Service'])
-  .controller('TestView', TestView)
-
-angular.module('App.Service', [])
-  .service('TestService', TestService)
-
-angular.bootstrap(angular.element(document.body), ['App'])
+mocha.run()
