@@ -9,6 +9,19 @@ npm i ng-injector --save
 
 ## usage
 
+`Load it before angular.js!!!`
+```ts
+import * as injector from 'ng-injector'
+import * as angular from 'angular'
+```
+
+or
+
+```html
+<script src="injector.js"></script>
+<script src="angular.js"></script>
+```
+
 ### es2015
 user_service.js
 ```js
