@@ -6,7 +6,7 @@
   "bundle": "tools/typings/tsd.d.ts",
   "installed": {
     "node/node.d.ts": {
-      "commit": "299b5caa22876ef27dc8e9a5b7fd7bf93457b6f4"
+      "commit": "4bd9b47f0ea79ba83c2e831c56bcaf8ba3a2c8ad"
     },
     "angularjs/angular.d.ts": {
       "commit": "299b5caa22876ef27dc8e9a5b7fd7bf93457b6f4"
@@ -28,6 +28,18 @@
     },
     "assertion-error/assertion-error.d.ts": {
       "commit": "299b5caa22876ef27dc8e9a5b7fd7bf93457b6f4"
+    },
+    "browser-sync/browser-sync.d.ts": {
+      "commit": "4bd9b47f0ea79ba83c2e831c56bcaf8ba3a2c8ad"
+    },
+    "chokidar/chokidar.d.ts": {
+      "commit": "4bd9b47f0ea79ba83c2e831c56bcaf8ba3a2c8ad"
+    },
+    "micromatch/micromatch.d.ts": {
+      "commit": "4bd9b47f0ea79ba83c2e831c56bcaf8ba3a2c8ad"
+    },
+    "parse-glob/parse-glob.d.ts": {
+      "commit": "4bd9b47f0ea79ba83c2e831c56bcaf8ba3a2c8ad"
     }
   }
 }

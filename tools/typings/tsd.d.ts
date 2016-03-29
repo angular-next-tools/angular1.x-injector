@@ -6,3 +6,7 @@
 /// <reference path="assertion-error/assertion-error.d.ts" />
 /// <reference path="chai/chai.d.ts" />
 /// <reference path="mocha/mocha.d.ts" />
+/// <reference path="browser-sync/browser-sync.d.ts" />
+/// <reference path="chokidar/chokidar.d.ts" />
+/// <reference path="micromatch/micromatch.d.ts" />
+/// <reference path="parse-glob/parse-glob.d.ts" />

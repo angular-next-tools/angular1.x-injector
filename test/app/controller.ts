@@ -1,6 +1,6 @@
 'use strict'
 
-import {ctrlInjector} from '../../src'
+import {ctrlInjector} from 'ng-injector'
 import {TestService} from './service'
 
 @ctrlInjector([

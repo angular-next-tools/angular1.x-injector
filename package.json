@@ -11,7 +11,8 @@
     "build_test": "rm -rf www && ts-node tools/build/build_test.ts && cp test/index.html www",
     "build_all": "npm run build_cjs && npm run build_es6 && npm run build_umd && npm run build_test",
     "watch": "./node_modules/.bin/ts-node ./tools/build/watch.ts",
-    "lint": "./node_modules/.bin/tslint -c ./tslint.json ./src/**/*.ts",
+    "serve": "./node_modules/.bin/ts-node ./tools/tasks/serve.ts",
+    "lint": "./node_modules/.bin/tslint -c ./tslint.json ./src/**/*.ts ./tools/build/**/*.ts ./tools/tasks/**/*.ts",
     "test": "./node_modules/.bin/mocha-phantomjs test/index.html"
   },
   "files": [
@@ -39,6 +40,7 @@
     "angular": "^1.5.3",
     "angular-mocks": "1.5.0",
     "babel-preset-es2015-rollup": "^1.1.1",
+    "browser-sync": "^2.11.2",
     "chai": "^3.5.0",
     "ionic-release": "^1.2.4",
     "mocha": "^2.4.5",

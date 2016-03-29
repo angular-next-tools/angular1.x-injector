@@ -1,3 +1,4 @@
 'use strict'
 
-export * from './injector'
+export * from './ctrl_injector'
+export * from './service_injector'

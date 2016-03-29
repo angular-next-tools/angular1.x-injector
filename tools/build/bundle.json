@@ -6,6 +6,7 @@
     "inlineSourceMap": true
   },
   "files": [
+    "../../test/injector.d.ts",
     "../../test/index.ts",
     "../typings/tsd.d.ts"
   ],

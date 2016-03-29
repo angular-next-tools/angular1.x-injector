@@ -2,18 +2,21 @@ import * as path from 'path'
 
 const webpack = require('webpack')
 
-export const bundle = (watch?: boolean) => {
+export const bundle = (watch?: boolean, callback?: Function) => {
   const config = {
     entry: {
       app: path.join(process.cwd(), 'test/index.ts'),
-      lib: ['ionic-release', 'angular-mocks']
+      lib: ['ng-injector', 'ionic-release', 'angular-mocks']
     },
     output: {
       filename: 'app.js',
       path: path.join(process.cwd(), 'www/')
     },
     resolve: {
-      extensions: ['', '.webpack.js', '.web.js', '.ts', '.js']
+      extensions: ['', '.webpack.js', '.web.js', '.ts', '.js'],
+      alias: {
+        'ng-injector': path.join(process.cwd(), '/lib/injector.js')
+      }
     },
     module: {
       loaders: [
@@ -39,5 +42,6 @@ export const bundle = (watch?: boolean) => {
 
   return new webpack(config, (err, stats) => {
     console.log('[webpack]', stats.toString())
+    if (typeof callback === 'function') callback()
   })
 }
