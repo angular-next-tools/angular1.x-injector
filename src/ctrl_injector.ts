@@ -8,7 +8,6 @@ export const ctrlInjector = (deps: string[]) => {
 
     function construct(constructor: Function, $injector: any, $scope: angular.IScope) {
       const Componment : any = function () {
-        constructor.$inject = ['$injector', '$scope']
         this.$scope = $scope
         angular.forEach(deps, dep => {
           try {
@@ -26,6 +25,8 @@ export const ctrlInjector = (deps: string[]) => {
     const f : any = function ($injector: any, $scope: angular.IScope) {
       return construct(original, $injector, $scope)
     }
+
+    f.$injector = ['$injector', '$scope']
 
     f.prototype = original.prototype
 
