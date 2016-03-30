@@ -40,6 +40,12 @@
     },
     "parse-glob/parse-glob.d.ts": {
       "commit": "4bd9b47f0ea79ba83c2e831c56bcaf8ba3a2c8ad"
+    },
+    "uglify-js/uglify-js.d.ts": {
+      "commit": "dbb2d9f1f1f0e50a3530dcfc02944f492be246dd"
+    },
+    "source-map/source-map.d.ts": {
+      "commit": "dbb2d9f1f1f0e50a3530dcfc02944f492be246dd"
     }
   }
 }

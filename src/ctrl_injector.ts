@@ -16,7 +16,7 @@ export const ctrlInjector = (deps: string[]) => {
             console.error(`get dependency: ${dep} fail`)
           }
         })
-        return constructor.call(this)
+        return constructor.call(this, $injector, $scope)
       }
       Componment.prototype = constructor.prototype
       return new Componment()
@@ -26,7 +26,7 @@ export const ctrlInjector = (deps: string[]) => {
       return construct(original, $injector, $scope)
     }
 
-    f.$injector = ['$injector', '$scope']
+    f.$inject = ['$injector', '$scope']
 
     f.prototype = original.prototype
 

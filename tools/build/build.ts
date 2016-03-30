@@ -16,7 +16,7 @@ export const bundle = (watch?: boolean, callback?: Function) => {
       extensions: ['', '.webpack.js', '.web.js', '.ts', '.js'],
       alias: {
         'ionic-release': path.join(process.cwd(), '/node_modules/ionic-release/js/ionic.bundle.js'),
-        'ng-injector': path.join(process.cwd(), '/lib/injector.js')
+        'ng-injector': path.join(process.cwd(), '/lib/injector.umd.js')
       }
     },
     module: {

@@ -10,3 +10,5 @@
 /// <reference path="chokidar/chokidar.d.ts" />
 /// <reference path="micromatch/micromatch.d.ts" />
 /// <reference path="parse-glob/parse-glob.d.ts" />
+/// <reference path="source-map/source-map.d.ts" />
+/// <reference path="uglify-js/uglify-js.d.ts" />

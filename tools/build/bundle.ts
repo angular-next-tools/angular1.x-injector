@@ -1,6 +1,7 @@
 'use strict'
 
 import * as fs from 'fs'
+import * as uglify from 'uglify-js'
 
 const rollup  = require('rollup')
 const babel   = require('rollup-plugin-babel')
@@ -50,7 +51,14 @@ function bundleUMD (bundle: any) {
       moduleName: 'injector'
     }).code
 
-    return write('lib/injector.umd.js', code).then(resolve)
+    const minified = banner + '\n' + uglify.minify(code, {
+      fromString: true,
+      output: <any>{
+        ascii_only: true
+      }
+    }).code
+
+    return write('lib/injector.umd.js', minified).then(resolve)
   })
 }
 
