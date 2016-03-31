@@ -1,8 +1,13 @@
 'use strict'
+import {dependencis} from './utils'
 
-export const ctrlInjector = (deps: string[]) => {
-  if (!deps) deps = []
-  if (!(deps instanceof Array)) throw new Error('deps must be Array')
+export const ctrlInjector = (deps: dependencis = []) => {
+  if (typeof deps === 'string') {
+    deps = [<string>deps]
+  } else if (!(deps instanceof Array)) {
+    throw new Error('deps must be Array')
+  }
+
   return (target: any) => {
     const original = target
 
@@ -27,9 +32,7 @@ export const ctrlInjector = (deps: string[]) => {
     }
 
     f.$inject = ['$injector', '$scope']
-
     f.prototype = original.prototype
-
     return f
   }
 }

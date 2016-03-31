@@ -2,6 +2,7 @@
 
 import {forEach} from './utils'
 
+export type dependencis = string | string[]
 export const bootstrapModules = []
 
 ; (function (window: Window) {

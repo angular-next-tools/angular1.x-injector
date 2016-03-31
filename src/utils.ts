@@ -1,4 +1,5 @@
 'use strict'
+export type dependencis = string | string[]
 export function forEach<T>(target: Array<T>, eachFunc: (val: T, key: number) => void): void
 
 export function forEach<T>(target: {
