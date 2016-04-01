@@ -8,14 +8,18 @@ export const serviceInjector = (deps: dependencis = []) => {
     throw new Error('deps must be Array')
   }
 
-  return (target: Function) => {
+  return (target: any) => {
+    let construct: any = function (args: any[]) {
+        args.forEach((arg, i) => this[deps[i]] = arg)
+    }
+    construct.prototype = target.prototype
+
     let f = function(...args){
-      args.forEach((arg, i) => this[deps[i]] = arg)
-      return target.call(this)
+      return new construct(args)
     }
 
-    f.prototype = target.prototype
     f.$inject = <string[]>deps
+    f.prototype = target.prototype
     return f
   }
 }

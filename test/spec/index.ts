@@ -1,7 +1,7 @@
 'use strict'
 
 import {TestService} from '../app/service'
-import {TestView} from '../app/controller'
+import {TestView, TestView2} from '../app/controller'
 
 const expect = chai.expect
 
@@ -12,9 +12,10 @@ export default describe('Test Injector', () => {
   let controller: angular.IControllerService
   let ionicListDelegate: ionic.list.IonicListDelegate
   let scope: angular.IScope
-  let TestView: TestView
+  let TestViewInstance: TestView
   let testService: TestService
   let q: angular.IQService
+  let TestView2Factory: Function
 
   beforeEach(() => {
     angular.mock.module('App')
@@ -29,19 +30,35 @@ export default describe('Test Injector', () => {
       controller = $controller
       scope = $rootScope.$new()
       ionicListDelegate = $ionicListDelegate
-      TestView = $controller<TestView>('TestView as TestCtrl', {$scope: scope})
+      TestViewInstance = $controller<TestView>('TestView as TestCtrl', {$scope: scope})
+      TestView2Factory = () => {
+          $controller<TestView2>('TestView2 as TestCtrl2', {$scope: scope})
+      }
       testService = TestService
       q = $q
     })
   })
 
   it('inject deps to controller should ok', () => {
-    expect(TestView.$scope).to.equal(scope)
-    expect(TestView.$ionicListDelegate).to.equal(ionicListDelegate)
+    expect(TestViewInstance.$scope).to.equal(scope)
+    expect(TestViewInstance.$ionicListDelegate).to.equal(ionicListDelegate)
   })
 
   it('inject deps to service should ok', () => {
     expect(testService.$q.toString()).to.deep.equal(q.toString())
   })
 
+  it('no parameter will be passed to constructor function', () => {
+    expect(TestViewInstance.constructorArgs.length).to.equal(0)
+  })
+
+  it('should have thrown an error when inject a non-existent service', () => {
+    expect(TestView2Factory).to.throw(Error)
+  })
+
+  it('keep prototype chain working as before', () => {
+    let testFn = () => {}
+    TestView.prototype['fn'] = testFn
+    expect(TestViewInstance['fn']).to.equal(testFn)
+  })
 })
