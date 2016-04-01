@@ -1,35 +1,36 @@
 'use strict'
+import {dependencis} from './utils'
 
-export const ctrlInjector = (deps: string[]) => {
-  if (!deps) deps = []
-  if (!(deps instanceof Array)) throw new Error('deps must be Array')
+export const ctrlInjector = (deps: dependencis = []) => {
+  if (typeof deps === 'string') {
+    deps = [<string>deps]
+  } else if (!(deps instanceof Array)) {
+    throw new Error('deps must be Array')
+  }
+
   return (target: any) => {
-    const original = target
-
-    function construct(constructor: Function, $injector: any, $scope: angular.IScope) {
+    function construct($injector: any, $scope: angular.IScope) {
       const Componment : any = function () {
-        this.$scope = $scope
-        angular.forEach(deps, dep => {
-          try {
-            if (dep !== '$scope') this[dep] = $injector.get(dep)
-          }catch (e) {
-            console.error(`get dependency: ${dep} fail`)
-          }
+        (<string[]>deps).forEach(dep => {
+            try {
+              if (dep !== '$scope') this[dep] = $injector.get(dep)
+            } catch (e) {
+              console.error(`get dependency: ${dep} fail`)
+            }
         })
-        return constructor.call(this, $injector, $scope)
+        this.$scope = $scope
+        return target.call(this)
       }
-      Componment.prototype = constructor.prototype
+      Componment.prototype = target.prototype
       return new Componment()
     }
 
     const f : any = function ($injector: any, $scope: angular.IScope) {
-      return construct(original, $injector, $scope)
+      return construct($injector, $scope)
     }
 
     f.$inject = ['$injector', '$scope']
-
-    f.prototype = original.prototype
-
+    f.prototype = target.prototype
     return f
   }
 }
