@@ -1,9 +1,10 @@
 'use strict'
 
-import {ctrlInjector} from 'ng-injector'
+import {injector} from 'ng-injector'
 import {TestService} from './service'
 
-@ctrlInjector([
+@injector([
+  '$scope',
   'TestService',
   '$ionicListDelegate'
 ])
@@ -12,12 +13,12 @@ export class TestView {
   $ionicListDelegate: ionic.list.IonicListDelegate
   $scope: angular.IScope
   constructorArgs:any[]
-  constructor(...args){
-      this.constructorArgs = args
+  constructor(...args: any[]){
+    this.constructorArgs = args
   }
 }
 
-@ctrlInjector('$DotA')
+@injector('$DotA')
 export class TestView2{
-    $DotA: any
+  $DotA: any
 }
