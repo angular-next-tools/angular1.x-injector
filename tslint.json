@@ -54,7 +54,7 @@
     ],
     "quotemark": [true, "single"],
     "radix": true,
-    "semicolon": false,
+    "semicolon": "never",
     "triple-equals": [true, "allow-null-check"],
     "typedef": [true,
       "callSignature",

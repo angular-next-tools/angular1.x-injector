@@ -9,26 +9,13 @@ npm i ng-injector --save
 
 ## usage
 
-`Load it before angular.js!!!`
-```ts
-import * as injector from 'ng-injector'
-import * as angular from 'angular'
-```
-
-or
-
-```html
-<script src="injector.js"></script>
-<script src="angular.js"></script>
-```
-
 ### es2015
 user_service.js
 ```js
 'use strict'
 
-import {serviceInjector} from 'ng-injector'
-@serviceInjector([
+import {injector} from 'ng-injector'
+@injector([
   '$q'
 ])
 export class UserService {
@@ -40,9 +27,9 @@ export class UserService {
 home_view.js
 ```js
 'use strict'
-import {ctrlInjector} from 'ng-injector'
+import {injector} from 'ng-injector'
 
-@ctrlInjector([
+@injector([
   '$timeout',
   'UserService'
 ])
@@ -83,8 +70,8 @@ user_service.ts
 ```ts
 'use strict'
 
-import {serviceInjector} from 'ng-injector'
-@serviceInjector([
+import {injector} from 'ng-injector'
+@injector([
   '$q'
 ])
 export class UserService {
@@ -100,10 +87,10 @@ export class UserService {
 home_view.ts
 ```ts
 'use strict'
-import {ctrlInjector} from 'ng-injector'
+import {injector} from 'ng-injector'
 import {UserService} from './user_service'
 
-@ctrlInjector([
+@injector([
   '$timeout',
   'UserService'
 ])
@@ -144,17 +131,3 @@ angular.module('YourModuleName', [])
   .controller('HomeView', HomeView)
 ```
 
-## inject $scope default
-
-```js
-'use strict'
-import {ctrlInjector} from 'ng-injector'
-
-@ctrlInjector()
-class HomeView {
-  constructor() {
-    console.log(this.$scope) // Your Scope Here
-  }
-}
-
-```

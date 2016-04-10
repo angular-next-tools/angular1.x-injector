@@ -1,7 +1,7 @@
 'use strict'
-import {dependencis} from './utils'
+import {dependencis, forEach} from './utils'
 
-export const serviceInjector = (deps: dependencis = []) => {
+export const injector = (deps: dependencis = []) => {
   if (typeof deps === 'string') {
     deps = [<string>deps]
   } else if (!(deps instanceof Array)) {
@@ -10,11 +10,11 @@ export const serviceInjector = (deps: dependencis = []) => {
 
   return (target: any) => {
     let construct: any = function (args: any[]) {
-        args.forEach((arg, i) => this[deps[i]] = arg)
+      forEach(args, (arg, i) => this[deps[i]] = arg)
     }
     construct.prototype = target.prototype
 
-    let f = function(...args){
+    let f = function(...args: any[]){
       return new construct(args)
     }
 

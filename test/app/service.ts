@@ -1,8 +1,8 @@
 'use strict'
 
-import {serviceInjector} from 'ng-injector'
+import {injector} from 'ng-injector'
 
-@serviceInjector('$q')
+@injector('$q')
 export class TestService {
   $q: angular.IQService
 
