@@ -9,13 +9,17 @@ export const injector = (deps: dependencis = []) => {
   }
 
   return (target: any) => {
-    let construct: any = function (args: any[]) {
-      forEach(args, (arg, i) => this[deps[i]] = arg)
+    const construct: any = function (args: any[]): any {
+      const Component: any = function () {
+        forEach(args, (arg: any, i: number) => this[deps[i]] = arg)
+        return target.call(this)
+      }
+      Component.prototype = target.prototype
+      return new Component()
     }
-    construct.prototype = target.prototype
 
-    let f = function(...args: any[]){
-      return new construct(args)
+    const f = function(...args: any[]){
+      return construct(args)
     }
 
     f.$inject = <string[]>deps
