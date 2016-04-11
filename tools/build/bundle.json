@@ -8,7 +8,7 @@
   "files": [
     "../../test/injector.d.ts",
     "../../test/index.ts",
-    "../typings/tsd.d.ts"
+    "../../typings/main.d.ts"
   ],
   "exclude": [
     "node_modules",

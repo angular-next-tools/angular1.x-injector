@@ -5,15 +5,16 @@
   "main": "lib/cjs/index.js",
   "typings": "lib/cjs/index.d.ts",
   "scripts": {
-    "build_cjs": "rm -rf ./lib/cjs && ./node_modules/.bin/tsc src/index.ts tools/typings/tsd.d.ts -m commonjs --outDir lib/cjs --sourcemap --sourceRoot src --target ES5 -d --diagnostics --pretty --experimentalDecorators --noImplicitAny --suppressImplicitAnyIndexErrors",
-    "build_es6": "rm -rf ./lib/es2015 && ./node_modules/.bin/tsc src/index.ts tools/typings/tsd.d.ts --outDir lib/es2015 --sourcemap --sourceRoot src --target ES2015 -d --diagnostics --pretty --experimentalDecorators --noImplicitAny --suppressImplicitAnyIndexErrors",
+    "build_cjs": "rm -rf ./lib/cjs && ./node_modules/.bin/tsc src/index.ts ./typings/main.d.ts -m commonjs --outDir lib/cjs --sourcemap --sourceRoot src --target ES5 -d --diagnostics --pretty --experimentalDecorators --noImplicitAny --suppressImplicitAnyIndexErrors",
+    "build_es6": "rm -rf ./lib/es2015 && ./node_modules/.bin/tsc src/index.ts ./typings/main.d.ts --outDir lib/es2015 --sourcemap --sourceRoot src --target ES2015 -d --diagnostics --pretty --experimentalDecorators --noImplicitAny --suppressImplicitAnyIndexErrors",
     "build_umd": "rm -f ./lib/injector* && ./node_modules/.bin/ts-node ./tools/build/bundle.ts",
     "build_test": "rm -rf www && ts-node tools/build/build_test.ts && cp test/index.html www",
     "build_all": "npm run build_cjs && npm run build_es6 && npm run build_umd && npm run build_test",
     "watch": "./node_modules/.bin/ts-node ./tools/build/watch.ts",
     "serve": "./node_modules/.bin/ts-node ./tools/tasks/serve.ts",
     "lint": "./node_modules/.bin/tslint -c ./tslint.json ./src/**/*.ts ./tools/build/**/*.ts ./tools/tasks/**/*.ts",
-    "test": "./node_modules/.bin/mocha-phantomjs test/index.html"
+    "test": "./node_modules/.bin/mocha-phantomjs test/index.html",
+    "postinstall": "typings install"
   },
   "files": [
     "lib",
@@ -52,6 +53,7 @@
     "tsd": "^0.6.5",
     "tslint": "^3.6.0",
     "typescript": "^1.8.9",
+    "typings": "^0.7.12",
     "uglify-js": "^2.6.2",
     "webpack": "^1.12.14"
   }
