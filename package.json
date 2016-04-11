@@ -1,6 +1,6 @@
 {
   "name": "ng-injector",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Injector decorator for writing angular 1.x with ES6/TypeScript",
   "main": "lib/cjs/index.js",
   "typings": "lib/cjs/index.d.ts",
