@@ -12,7 +12,8 @@ export class TestView {
   TestService: TestService
   $ionicListDelegate: ionic.list.IonicListDelegate
   $scope: angular.IScope
-  constructorArgs:any[]
+  constructorArgs: any[]
+
   constructor(...args: any[]){
     this.constructorArgs = args
   }
@@ -21,4 +22,9 @@ export class TestView {
 @injector('$DotA')
 export class TestView2{
   $DotA: any
+}
+
+
+interface TestView3Scope extends angular.IScope {
+  name: string
 }

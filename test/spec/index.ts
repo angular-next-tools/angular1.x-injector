@@ -48,6 +48,10 @@ export default describe('Test Injector', () => {
     expect(testService.$q.toString()).to.deep.equal(q.toString())
   })
 
+  it('no parameter will be passed to constructor function', () => {
+    expect(TestViewInstance.constructorArgs.length).to.equal(0)
+  })
+
   it('should have thrown an error when inject a non-existent service', () => {
     expect(TestView2Factory).to.throw(Error)
   })
@@ -57,4 +61,5 @@ export default describe('Test Injector', () => {
     TestView.prototype['fn'] = testFn
     expect(TestViewInstance['fn']).to.equal(testFn)
   })
+
 })
