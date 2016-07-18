@@ -1,16 +1,18 @@
 {
-  "ambientDependencies": {
-    "angular": "registry:dt/angular#1.5.0+20160328125810",
-    "angular-mocks": "registry:dt/angular-mocks#1.3.0+20160322011350",
+  "name": "ng-injector",
+  "dependencies": {},
+  "globalDependencies": {
+    "angular": "registry:dt/angular#1.5.0+20160709055139",
+    "angular-mocks": "registry:dt/angular-mocks#1.5.0+20160608104721",
     "assertion-error": "registry:dt/assertion-error#1.0.0+20160316155526",
-    "browser-sync": "registry:dt/browser-sync#0.0.0+20160316155526",
-    "chai": "registry:dt/chai#3.4.0+20160317120654",
+    "browser-sync": "registry:dt/browser-sync#0.0.0+20160524142403",
+    "chai": "registry:dt/chai#3.4.0+20160601211834",
     "chokidar": "registry:dt/chokidar#1.4.3+20160316155526",
-    "ionic": "registry:dt/ionic#0.0.0+20160317120654",
-    "jquery": "registry:dt/jquery#1.10.0+20160316155526",
+    "ionic": "registry:dt/ionic#0.0.0+20160501155303",
+    "jquery": "registry:dt/jquery#1.10.0+20160704162008",
     "micromatch": "registry:dt/micromatch#2.3.7+20160123140905",
-    "mocha": "registry:dt/mocha#2.2.5+20160317120654",
-    "node": "registry:dt/node#4.0.0+20160330064709",
+    "mocha": "registry:dt/mocha#2.2.5+20160619032855",
+    "node": "registry:dt/node#6.0.0+20160709114037",
     "parse-glob": "registry:dt/parse-glob#3.0.4+20160110125512",
     "source-map": "registry:dt/source-map#0.0.0+20160317120654",
     "uglify-js": "registry:dt/uglify-js#2.6.1+20160316155526"
